@@ -1,0 +1,12 @@
+coverage==4.0
+flake8==2.4.1
+lxml==3.4.4
+mccabe==0.3.1
+pep8==1.5.7
+py==1.4.30
+pycountry==1.15
+pyflakes==0.8.1
+pytest==2.8.0
+pytest-cov==2.1.0
+python-docx==0.8.5
+requests==2.7.0
