@@ -1,25 +1,5 @@
 from .nanpa import npa
 
-
-class InvalidPhone(Exception):
-    pass
-
-
-def get_country(phone):
-    '''
-    Really simple function to get the ISO-3166-1 country from a phone number
-    The phone number must be in E.164, aka international format.
-    '''
-    m = mapping
-    try:
-        for c in filter(str.isdigit, str(phone)):
-            m = m[int(c)]
-            if isinstance(m, str):
-                return m
-    except:
-        raise InvalidPhone('Invalid phone {}'.format(phone))
-
-
 # Based on E164 list from ITU mapped to ISO-3166-1 Alpha 2 by hand
 # https://www.itu.int/dms_pub/itu-t/opb/sp/T-SP-E.164D-11-2011-PDF-E.pdf
 # http://www.itu.int/opb/publications.aspx?parent=T-SP&view=T-SP2
