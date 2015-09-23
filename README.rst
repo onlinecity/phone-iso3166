@@ -82,15 +82,12 @@ inputs, try `phonenumbers`_.
     >>> phonenumbers.format_number(local, phonenumbers.PhoneNumberFormat.E164)
     '+442083661177'
     >>> cc = phone_country(str(local.country_code)+str(local.national_number))
-    >>> country = pycountry.countries.get(alpha2=cc)
-    >>> country.name
-    'United Kingdom'
     >>> uk = pycountry.countries.get(alpha2=cc)
     >>> uk.name
     'United Kingdom'
     >>> uk.official_name
     'United Kingdom of Great Britain and Northern Ireland'
-    >>> wh = phonenumbers.parse("+1 202-456-1111", "GB")
+    >>> wh = phonenumbers.parse("0012024561111", "GB")
     >>> cc_wh = phone_country(str(wh.country_code)+str(wh.national_number))
     >>> cc_wh
     'US'
