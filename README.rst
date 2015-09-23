@@ -68,8 +68,37 @@ packages such as `pycountry`_.
     'Federative Republic of Brazil'
 
 
+This package makes no attempt to understand the various input options for
+phone numbers, and assumes an international phone number. If you deal in fuzzy
+inputs, try `phonenumbers`_.
+
+.. code:: pycon
+
+
+    >>> from phone_iso3166.country import phone_country
+    >>> import phonenumbers
+    >>> import pycountry
+    >>> local = phonenumbers.parse("020 8366 1177", "GB")
+    >>> phonenumbers.format_number(local, phonenumbers.PhoneNumberFormat.E164)
+    '+442083661177'
+    >>> cc = phone_country(str(local.country_code)+str(local.national_number))
+    >>> country = pycountry.countries.get(alpha2=cc)
+    >>> country.name
+    'United Kingdom'
+    >>> uk = pycountry.countries.get(alpha2=cc)
+    >>> uk.name
+    'United Kingdom'
+    >>> uk.official_name
+    'United Kingdom of Great Britain and Northern Ireland'
+    >>> wh = phonenumbers.parse("+1 202-456-1111", "GB")
+    >>> cc_wh = phone_country(str(wh.country_code)+str(wh.national_number))
+    >>> cc_wh
+    'US'
+
+
 .. |build-status| image:: https://travis-ci.org/onlinecity/phone-iso3166.svg?branch=master
    :target: https://travis-ci.org/onlinecity/phone-iso3166
 .. |coverage-status| image:: https://img.shields.io/coveralls/onlinecity/phone-iso3166.svg
    :target: https://coveralls.io/r/onlinecity/phone-iso3166
 .. _pycountry: https://pypi.python.org/pypi/pycountry
+.. _phonenumbers: https://pypi.python.org/pypi/phonenumberslite
