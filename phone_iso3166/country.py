@@ -1,19 +1,13 @@
 from .e164 import mapping
 from .e212 import networks
-
-
-class InvalidPhone(Exception):
-    pass
-
-
-class InvalidNetwork(Exception):
-    pass
+from .errors import InvalidPhone, InvalidNetwork
 
 
 def phone_country(phone):
     '''
     Really simple function to get the ISO-3166-1 country from a phone number
     The phone number must be in E.164, aka international format.
+    Returns an ISO-3166-1 alpha-2 code.
     '''
     m = mapping
     try:
@@ -26,6 +20,12 @@ def phone_country(phone):
 
 
 def network_country(mcc, mnc):
+    '''
+    Get the country matching the MCC and MNC. In a few edgecases the MCC is not
+    sufficient to identify the country, since some countries share MCC. However
+    it's not often the case, so you could just specify MCC
+    Returns an ISO-3166-1 alpha-2 code.
+    '''
     try:
         c = networks[mcc]
         if isinstance(c, str):

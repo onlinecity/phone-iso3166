@@ -1,6 +1,5 @@
-from phone_iso3166.country import (
-    phone_country, InvalidPhone, network_country, InvalidNetwork
-)
+from phone_iso3166.country import phone_country, network_country
+from phone_iso3166.errors import InvalidNetwork, InvalidPhone
 import pytest
 
 
