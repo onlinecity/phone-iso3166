@@ -1,10 +1,25 @@
 language: python
 python:
-    - "3.5"
+  - '3.5'
 env:
-    - TOXENV=py27
-    - TOXENV=py35
+  - TOXENV=py27
+  - TOXENV=py33
+  - TOXENV=py34
+  - TOXENV=py35
+  - TOXENV=pypy
+  - TOXENV=pypy3
 install:
-    - pip install tox
+  - pip install tox
 script:
-    - tox
+  - tox
+notifications:
+  slack:
+    secure: QPnRyMl/Bu70HDnNUe2aayn9YQ8QejDdkEKxAp2cpTSLSjiy4YnZPx0FIdsSt18YVkewJyCc8XSwZXCMcADGZw8jxtD1TQqeJqdRZv/4cHPJYL6wmM3sOSdlqXVpP/klyYxvqPstcv8JEkQU2ob+RhiNDqfamFSS57OXI0vUyhF6aFd3x1iuzVsr4hBpBDclCu/bmta2Fd/hYx2EFxWi7P6qj5Lnda7S1cJIBrobeoKyBxDDk8RRX5HISExWL04EhRSqz4NXRis7Nv0kr8sNlYJTbIUsXl+94dpAax1YKn/c6rwBD8agWq7kBxbBI3YJGmIWP9gDYWJrx8QcJYCXHPxGyTCm6QY6vT16yjotC6dOlTdBROUdVbNGO6Qz1wsV4fnpwGM16fV1lSeW3HWw3Ctj71/BtbTK8GlWin/MKfwxqU/qFO6M9dC9BDHsDojSC0bjb9kqsUX9m4F1ChnkDVVdMuLAx6EumOJOWTwextuBZBR8HIcAqj5clMktugi5MJKUmtFstPiWHKjfTchqgPSKUJi0ak4hF7O2aSBXyoeO2qzT8smWETf+2a+PeCqzl7eP1bUCvrRFD+H/IXLAhvzgUcrmi4C8r8DP/vhAAyFbUeN3feQ2k9T+M5x2XnOK2z3uUKn56DsgQ7w8/CsbMKTD2nL5xKa9QvzH5uVE/A0=
+  email: false
+deploy:
+  provider: pypi
+  user: "oc"
+  password:
+    secure: ggz4SdNW7actBur8TVCfAuLwfdODR6LxYh6E97BGK+GLCW/81lSYV5g85JfFFud3IvOFkFPyL/ab7HxIkRWQqosmfQQT9DPnhXMv+g2uBRl7qVwynaHJu8ykpun3zwnNSAr+j+WrM8tvSODEQ4SNyqh3bzToXphezNFqwXgEaA3oWGg3Exk5HX25u4dVPIhpNx3FSX5gUHWU8vCAnkDGALViTtCstN7ucyCD1D1TyGxu6Wbn4+moUsF0lIOqOuvroeMYA2Vxm9IQW8jumbrOfRgXVkHE2ag2QGFr5gpePfeQ0Y+ABJAX7GTpNoh2Q3B9/9XPcI01PWHxpLr2TQWHirolu5hZt9izE0AwSn3ctC/T/sloR/V/tEc+8YE/AWY/IBHKDiR3RvyN7a7Zng8FshGOxtfJj2Whpovo8w7WMl6ZMihUkb/C31s0/UlhtsmdD5OZfXeC1rC+l8i/r3hjBSaUcL9LJ5jmBREhSThAGx/3yPvEuxdKC9/hneUe5ABy06piX5D3y+kiIJILAxxWruVyFc1gPGC4WceB9/iu/bJC3fKpK8hnFZbZh05LIjGBWX9bGceev+U97feKWELeNJBhi4jz+we9fBcxwn4vq3biQxZxil0wxxZyIWXdbZDV9YsdVIVIma+jspACOQ9SrPS8phM6eiy6xMEc8DsOL4U=
+  on:
+    tags: true
