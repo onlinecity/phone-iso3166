@@ -64,7 +64,7 @@ mapping = {
         6: {
             0: 'ZM',
             1: 'MG',
-            2: 'YT',
+            2: 'RE',  # TODO: Should implement ARCEP (French NPA)
             3: 'ZW',
             4: 'NA',
             5: 'MW',
