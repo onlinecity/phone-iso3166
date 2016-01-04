@@ -9,10 +9,10 @@ def readfile(filename):
 
 setup(
     name="phone-iso3166",
-    description="Phonenumber to ISO 3166-1 mapping",
+    description="Phonenumber to Country (ISO 3166-1) mapping",
     install_requires=[
     ],
-    keywords="oc",
+    keywords="phone country mobile iso3166 e164 e212 countrycode phonenumber",
     long_description=readfile("README.rst"),
     version=phone_iso3166.__version__,
     packages=find_packages(),

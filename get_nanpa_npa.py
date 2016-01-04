@@ -24,9 +24,27 @@ for row in npareader:
         # Get column 0 and 9, according to field definitions:
         #   http://www.nanpa.com/area_codes/AreaCodeDatabaseDefinitions.xls
         npa = row[0]
+        assigned = row[5]
+        use = row[7]
+        location = row[8]
         country = row[9]
         if country == 'US':
-            country = 'US'
+            if location == 'USVI':
+                country = 'VI'
+            elif location == 'PUERTO RICO':
+                country = 'PR'
+            elif len(location) == 2:
+                country = 'US'
+            elif not location and assigned == 'No':
+                country = 'US'  # For NPAs reserved to US, just say US
+            elif not location and use == 'N':
+                country = 'US'  # For US non-geographic codes, just say US
+            elif npa == '670':
+                # Fix Commonwealth of the Northern Mariana Islands (CNMI)
+                country = 'MP'  # For some reason CNMI don't get a location
+            else:
+                print('Unknown location {} in US with NPA {}'
+                      .format(location, npa))
         elif country == 'CANADA':
             country = 'CA'
         elif country == 'BAHAMAS':
