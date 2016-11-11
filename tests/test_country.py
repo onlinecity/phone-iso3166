@@ -1,4 +1,6 @@
-from phone_iso3166.country import phone_country, network_country
+from phone_iso3166.country import (
+    phone_country, phone_country_prefix, network_country,
+)
 from phone_iso3166.errors import InvalidNetwork, InvalidPhone
 import pytest
 
@@ -43,3 +45,11 @@ def test_network_multi():
 def test_network_invalid():
     with pytest.raises(InvalidNetwork):
         network_country(0, 0)
+
+
+def test_phone_country_prefix():
+    assert phone_country_prefix(45) == (45, 'DK')
+    assert phone_country_prefix(4566118311) == (45, 'DK')
+    assert phone_country_prefix('+4566118311') == (45, 'DK')
+    assert phone_country_prefix('299 80 80 80') == (299, 'GL')
+    assert phone_country_prefix(14412921234) == (1441, 'BM')

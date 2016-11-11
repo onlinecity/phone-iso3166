@@ -19,6 +19,22 @@ def phone_country(phone):
         raise InvalidPhone('Invalid phone {}'.format(phone))
 
 
+def phone_country_prefix(phone):
+    '''
+    Function that returns (dialingprefix, ISO-3166-1 country) from phone number
+    '''
+    m = mapping
+    p = ''
+    try:
+        for c in filter(str.isdigit, str(phone)):
+            m = m[int(c)]
+            p += c
+            if isinstance(m, str):
+                return (int(p), m)
+    except:
+        raise InvalidPhone('Invalid phone {}'.format(phone))
+
+
 def network_country(mcc, mnc):
     '''
     Get the country matching the MCC and MNC. In a few edgecases the MCC is not
