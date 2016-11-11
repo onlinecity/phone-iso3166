@@ -61,7 +61,7 @@ packages such as `pycountry`_.
     >>> from phone_iso3166.country import phone_country
     >>> import pycountry
     >>> phone = '+55 21 3814-2121'
-    >>> c = pycountry.countries.get(alpha2=phone_country(phone))
+    >>> c = pycountry.countries.get(alpha_2=phone_country(phone))
     >>> c.name
     'Brazil'
     >>> c.official_name
@@ -82,7 +82,7 @@ inputs, try `phonenumbers`_.
     >>> phonenumbers.format_number(local, phonenumbers.PhoneNumberFormat.E164)
     '+442083661177'
     >>> cc = phone_country(str(local.country_code)+str(local.national_number))
-    >>> uk = pycountry.countries.get(alpha2=cc)
+    >>> uk = pycountry.countries.get(alpha_2=cc)
     >>> uk.name
     'United Kingdom'
     >>> uk.official_name
