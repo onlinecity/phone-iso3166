@@ -10,6 +10,8 @@ out_file = 'phone_iso3166/nanpa.py'
 r = requests.get(npa_report)
 r.raise_for_status()
 csvdata = StringIO(r.text)
+csvdata.readline()  # Read header
+csvdata.readline()  # Read header
 npareader = csv.reader(csvdata, delimiter=',', quotechar='"')
 
 npamap = StringIO()
@@ -18,6 +20,7 @@ npamap.write('# Based on http://nanpa.com/reports/reports_npa.html\n\n')
 npamap.write('npa = \\\n')
 
 npadict = defaultdict(lambda: defaultdict(dict))
+
 
 for row in npareader:
     try:

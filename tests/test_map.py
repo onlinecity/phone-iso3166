@@ -25,6 +25,6 @@ def exempt(c):
 
 def test_verify_iso3166():
     for c in filter(exempt, flatten(mapping)):
-        country = countries.get(alpha2=c)
+        country = countries.get(alpha_2=c)
         assert country
-        assert country.alpha2 == c
+        assert country.alpha_2 == c
