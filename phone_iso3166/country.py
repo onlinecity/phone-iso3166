@@ -1,6 +1,6 @@
 from .e164 import mapping
 from .e212 import networks
-from .errors import InvalidPhone, InvalidNetwork
+from .errors import InvalidPhone, InvalidNetwork, InvalidCountry
 
 
 def phone_country(phone):
@@ -17,6 +17,34 @@ def phone_country(phone):
                 return m
     except:
         raise InvalidPhone('Invalid phone {}'.format(phone))
+
+
+def country_prefixes():
+    '''
+    Function that return a dictionary, with an ISO-3166-1 alpha-2 code,
+    as the key, and the country prefix as the value. For countries with
+    multiple prefixes, an abitrary one of them is chosen, for United states
+    and Canada code is denoted as 1.
+    '''
+    def transverse(node, path):
+        if isinstance(node, dict):
+            for k, v in node.items():
+                for i in transverse(v, path + str(k)):
+                    yield i
+        else:
+            yield node, 1 if node in ['US', 'CA'] else int(path)
+    return dict(transverse(mapping, ''))
+
+
+def country_prefix(country_code):
+    '''
+    Takes an ISO-3166-1 alpha-2 code. and returns the prefix for the country
+    '''
+    prefixes = country_prefixes()
+    try:
+        return prefixes[country_code.upper()]
+    except:
+        raise InvalidCountry('Invalid country {}'.format(country_code))
 
 
 def phone_country_prefix(phone):
