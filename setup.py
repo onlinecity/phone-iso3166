@@ -7,6 +7,7 @@ def readfile(filename):
     with open(join(dirname(__file__), filename), 'r') as f:
         return f.read()
 
+
 setup(
     name="phone-iso3166",
     description="Phonenumber to Country (ISO 3166-1) mapping",
