@@ -20,7 +20,7 @@ def exempt(c):
     DG, and ITU code of 246, yet pycountry does know it, because it's not a
     real country.
     '''
-    return c not in ['DG']
+    return c not in ['DG', 'XK']
 
 
 def test_verify_iso3166():
