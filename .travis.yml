@@ -6,7 +6,7 @@ env:
 - TOXENV=py33
 - TOXENV=py34
 - TOXENV=py35
-- TOXENV=pypy-5.4.1
+- TOXENV=pypy-5.4
 - TOXENV=pypy3.3-5.2-alpha1
 install:
 - pip install tox
