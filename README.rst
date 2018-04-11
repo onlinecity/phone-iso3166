@@ -40,7 +40,7 @@ name use the functions in `phone_iso3166.network`.
     >>> network(238, 1)
     ('DK', 'TDC Mobil')
     >>> country_networks('DK')
-    [(238, 1, 'TDC Mobil'), (238, 2, 'Sonofon'), (238, 3, 'MIGway A/S'),
+    [(238, 1, 'TDC Mobil'), (238, 2, 'Telenor'), (238, 3, 'MIGway A/S'),
      (238, 4, 'NextGen Mobile Ltd T/A CardBoardFish'), (238, 6, 'Hi3G'),
      (238, 8, 'Nordisk Mobiltelefon Danmark A/S'), (238, 10, 'TDC Mobil'),
      (238, 43, 'MobiWeb Limited'), (238, 12, 'Lycamobile Denmark'),
