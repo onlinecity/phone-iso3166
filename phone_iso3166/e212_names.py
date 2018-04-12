@@ -273,7 +273,7 @@ operators = \
        94: ('GB', 'Hutchison 3G UK Ltd'),
        95: ('GB', 'Network Rail Infrastructure Limited')},
  238: {1: ('DK', 'TDC Mobil'),
-       2: ('DK', 'Sonofon'),
+       2: ('DK', 'Telenor'),
        3: ('DK', 'MIGway A/S'),
        4: ('DK', 'NextGen Mobile Ltd T/A CardBoardFish'),
        6: ('DK', 'Hi3G'),
