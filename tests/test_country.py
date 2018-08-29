@@ -10,6 +10,9 @@ def test_phone_country_dk():
     assert phone_country(45) == 'DK'
     assert phone_country(4566118311) == 'DK'
     assert phone_country('+4566118311') == 'DK'
+    assert phone_country('+38640404040') == 'SI'
+    assert phone_country('+38340404040') == 'XK'
+    assert phone_country('+37740404040') == 'MC'
 
 
 def test_country_prefixes():
