@@ -10,6 +10,9 @@ def test_phone_country_dk():
     assert phone_country(45) == 'DK'
     assert phone_country(4566118311) == 'DK'
     assert phone_country('+4566118311') == 'DK'
+    assert phone_country('+38640118311') == 'SI'
+    assert phone_country('+38340118311') == 'XK'
+    assert phone_country('+37740118311') == 'MC'
 
 
 def test_country_prefixes():
@@ -21,6 +24,7 @@ def test_country_prefix():
     assert country_prefix('DK') == 45
     assert country_prefix('Dk') == 45
     assert country_prefix('us') == 1
+    assert country_prefix('xK') == 383
 
 
 def test_country_invalid():
