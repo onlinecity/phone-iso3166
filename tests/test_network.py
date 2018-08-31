@@ -6,7 +6,11 @@ import pytest
 def test_network():
     c, n = network(238, 1)
     assert c == 'DK'
-    assert n == 'TDC Mobil'
+    assert n == 'TDC A/S'
+
+    c, n = network(238, 2)
+    assert c == 'DK'
+    assert n == 'Telenor Denmark'
 
 
 def test_country_networks():
