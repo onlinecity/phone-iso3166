@@ -13,6 +13,9 @@ def test_phone_country_dk():
     assert phone_country('+38640118311') == 'SI'
     assert phone_country('+38340118311') == 'XK'
     assert phone_country('+37740118311') == 'MC'
+    assert phone_country('+77401183119') == 'KZ'
+    assert phone_country('+79901185311') == 'RU'
+    assert phone_country('+97040118311') == 'PS'
 
 
 def test_country_prefixes():
@@ -61,6 +64,7 @@ def test_network_dk():
 def test_network_multi():
     assert network_country(340, 1) == 'GP'   # Guadeloupe
     assert network_country(340, 12) == 'MQ'  # Martinique
+    assert network_country(425, 6) == 'PS'  # Palestine
 
 
 def test_network_invalid():

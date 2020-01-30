@@ -12,6 +12,10 @@ def test_network():
     assert c == 'DK'
     assert n == 'Telenor Denmark'
 
+    c, n = network(425, 6)
+    assert c == 'PS'
+    assert n == 'Wataniya Palestine Mobile Telecommunications Company'
+
 
 def test_country_networks():
     nets = country_networks('US')
