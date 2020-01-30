@@ -64,6 +64,7 @@ def test_network_dk():
 def test_network_multi():
     assert network_country(340, 1) == 'GP'   # Guadeloupe
     assert network_country(340, 12) == 'MQ'  # Martinique
+    assert network_country(425, 6) == 'PS'  # Palestine
 
 
 def test_network_invalid():
