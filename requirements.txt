@@ -9,4 +9,4 @@ pyflakes==0.8.1
 pytest==2.8.0
 pytest-cov==2.1.0
 python-docx==0.8.5
-requests==2.7.0
+requests==2.22.0
