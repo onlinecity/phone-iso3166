@@ -3,7 +3,7 @@ flake8==2.4.1
 lxml==4.6.2
 mccabe==0.3.1
 pep8==1.5.7
-py==1.4.30
+py==1.10.0
 pycountry==17.1.8
 pyflakes==0.8.1
 pytest==2.8.0
