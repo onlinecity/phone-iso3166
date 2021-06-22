@@ -78,3 +78,9 @@ def test_phone_country_prefix():
     assert phone_country_prefix('+4566118311') == (45, 'DK')
     assert phone_country_prefix('299 80 80 80') == (299, 'GL')
     assert phone_country_prefix(14412921234) == (1441, 'BM')
+
+
+def test_us_country():
+    assert phone_country(12797597235) == 'US'
+    assert phone_country(14458883022) == 'US'
+    assert phone_country(18204000053) == 'US'
