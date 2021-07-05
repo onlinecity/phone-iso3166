@@ -30,5 +30,8 @@ setup(
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         'Natural Language :: English'
-    )
+    ),
+    project_urls={
+        'Homepage': 'https://github.com/onlinecity/phone-iso3166',
+    },
 )
