@@ -337,6 +337,7 @@ operators = \
        5: ('SE', 'Svenska UMTS-Nät AB'),
        6: ('SE', 'Telenor Sverige AB'),
        7: ('SE', 'Tele2 Sverige AB'),
+       8: ('SE', 'Telenor Sverige AB'),
        9: ('SE', 'Communication for Devices in Sweden AB'),
        10: ('SE', 'Tele2 Sverige AB'),
        11: ('SE', 'ComHem AB'),
