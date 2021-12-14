@@ -1,6 +1,6 @@
 coverage==5.5
 flake8==2.4.1
-lxml==4.6.3
+lxml==4.6.5
 mccabe==0.3.1
 pep8==1.5.7
 py==1.10.0
