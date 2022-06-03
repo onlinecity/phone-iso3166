@@ -1,10 +1,10 @@
 class InvalidPhone(Exception):
-    pass
+    """The provided phone number was invalid."""
 
 
 class InvalidNetwork(Exception):
-    pass
+    """The provided network was invalid."""
 
 
 class InvalidCountry(Exception):
-    pass
+    """The provided country code was invalid."""

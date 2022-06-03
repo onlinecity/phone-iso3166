@@ -2,3 +2,5 @@
 lxml==4.6.5
 python-docx==0.8.5
 requests==2.22.0
+pre-commit
+mypy
