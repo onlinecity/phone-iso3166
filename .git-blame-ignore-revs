@@ -1,0 +1,4 @@
+# .git-blame-ignore-revs
+# add lines to remove them from the git blame views
+# added formatters and linters - lots of them:
+17e9adec9772cca4b55469d6fc45914c9ecadf4f
