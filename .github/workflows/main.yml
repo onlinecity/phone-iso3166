@@ -1,0 +1,20 @@
+name: Build/Deploy
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python_version: ["3.5", "3.6", "3.7", "3.8", "pypy-3.6", "pypy-3.7", "pypy-3.8"]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python_version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python_version }}
+    - name: Test with pytest
+      run: |
+        pip install -r requirements/test.txt
+        py.test
