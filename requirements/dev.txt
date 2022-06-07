@@ -54,7 +54,7 @@ py==1.11.0
     #   pytest
 pycountry==20.7.3
     # via -r requirements/test.txt
-pyparsing==3.0.9
+pyparsing==2.4.7
     # via
     #   -r requirements/test.txt
     #   packaging

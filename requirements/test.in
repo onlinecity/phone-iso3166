@@ -1,3 +1,4 @@
-pytest==6.1.2
+pytest==6.1.2  # for python3.5
+packaging==20.9  # for python3.5
+pyparsing==2.4.7  # for python3.5
 pycountry==20.7.3
-packaging==20.9
