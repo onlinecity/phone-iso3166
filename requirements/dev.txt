@@ -36,13 +36,13 @@ mypy-extensions==0.4.3
     # via mypy
 nodeenv==1.6.0
     # via pre-commit
-packaging==21.3
+packaging==20.9
     # via
     #   -r requirements/test.txt
     #   pytest
 platformdirs==2.5.2
     # via virtualenv
-pluggy==1.0.0
+pluggy==0.13.1
     # via
     #   -r requirements/test.txt
     #   pytest
@@ -58,7 +58,7 @@ pyparsing==3.0.9
     # via
     #   -r requirements/test.txt
     #   packaging
-pytest==7.1.2
+pytest==6.1.2
     # via -r requirements/test.txt
 python-docx==0.8.5
     # via -r requirements/dev.in
@@ -69,12 +69,12 @@ requests==2.22.0
 six==1.16.0
     # via virtualenv
 toml==0.10.2
-    # via pre-commit
-tomli==2.0.1
     # via
     #   -r requirements/test.txt
-    #   mypy
+    #   pre-commit
     #   pytest
+tomli==2.0.1
+    # via mypy
 typing-extensions==4.2.0
     # via mypy
 urllib3==1.25.11
