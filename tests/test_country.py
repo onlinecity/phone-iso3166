@@ -64,23 +64,21 @@ def test_missing():
         phone_country("999")
 
 
-def test_whitehouse():
-    # White house comment line
-    assert phone_country("+1 202-456-1111") == "US"
-
-
-def test_bermuda():
-    # Bermuda city hall
-    assert phone_country(14412921234) == "BM"
-
-
-def test_network_dk():
-    assert network_country(238, 1) == "DK"
+@pytest.mark.parametrize(
+    "phone_number, country_code",
+    [
+        ("+1 202-456-1111", "US"),
+        (14412921234, "BM"),
+    ],
+)
+def test_country_lookup(phone_number, country_code):
+    assert phone_country(phone_number) == country_code
 
 
 @pytest.mark.parametrize(
     "mcc, mnc, country_code",
     [
+        (238, 1, "DK"),  # Denmark
         (340, 1, "GP"),  # Guadeloupe
         (340, 12, "MQ"),  # Martinique
         (425, 6, "PS"),  # Palestine
