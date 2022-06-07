@@ -4,33 +4,21 @@
 #
 #    pip-compile --no-emit-index-url requirements/test.in
 #
-coverage==5.5
-    # via
-    #   -r requirements/test.in
-    #   pytest-cov
-flake8==2.4.1
-    # via -r requirements/test.in
-mccabe==0.3.1
-    # via
-    #   -r requirements/test.in
-    #   flake8
-pep8==1.5.7
-    # via
-    #   -r requirements/test.in
-    #   flake8
-py==1.10.0
-    # via
-    #   -r requirements/test.in
-    #   pytest
+attrs==21.4.0
+    # via pytest
+iniconfig==1.1.1
+    # via pytest
+packaging==21.3
+    # via pytest
+pluggy==1.0.0
+    # via pytest
+py==1.11.0
+    # via pytest
 pycountry==20.7.3
     # via -r requirements/test.in
-pyflakes==0.8.1
-    # via
-    #   -r requirements/test.in
-    #   flake8
-pytest==2.8.0
-    # via
-    #   -r requirements/test.in
-    #   pytest-cov
-pytest-cov==2.1.0
+pyparsing==3.0.9
+    # via packaging
+pytest==7.1.2
     # via -r requirements/test.in
+tomli==2.0.1
+    # via pytest
