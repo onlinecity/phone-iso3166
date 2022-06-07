@@ -6,14 +6,22 @@
 #
 certifi==2022.5.18.1
     # via requests
+cfgv==3.3.1
+    # via pre-commit
 chardet==3.0.4
     # via requests
 coverage==5.5
     # via
     #   -r requirements/test.txt
     #   pytest-cov
+distlib==0.3.4
+    # via virtualenv
+filelock==3.7.1
+    # via virtualenv
 flake8==2.4.1
     # via -r requirements/test.txt
+identify==2.5.1
+    # via pre-commit
 idna==2.8
     # via requests
 lxml==4.6.5
@@ -24,10 +32,20 @@ mccabe==0.3.1
     # via
     #   -r requirements/test.txt
     #   flake8
+mypy==0.960
+    # via -r requirements/dev.in
+mypy-extensions==0.4.3
+    # via mypy
+nodeenv==1.6.0
+    # via pre-commit
 pep8==1.5.7
     # via
     #   -r requirements/test.txt
     #   flake8
+platformdirs==2.5.2
+    # via virtualenv
+pre-commit==2.19.0
+    # via -r requirements/dev.in
 py==1.10.0
     # via
     #   -r requirements/test.txt
@@ -46,7 +64,19 @@ pytest-cov==2.1.0
     # via -r requirements/test.txt
 python-docx==0.8.5
     # via -r requirements/dev.in
+pyyaml==6.0
+    # via pre-commit
 requests==2.22.0
     # via -r requirements/dev.in
+six==1.16.0
+    # via virtualenv
+toml==0.10.2
+    # via pre-commit
+tomli==2.0.1
+    # via mypy
+typing-extensions==4.2.0
+    # via mypy
 urllib3==1.25.11
     # via requests
+virtualenv==20.14.1
+    # via pre-commit

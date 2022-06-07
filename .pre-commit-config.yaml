@@ -1,0 +1,52 @@
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.2.0
+  hooks:
+  - id: check-merge-conflict
+  - id: end-of-file-fixer
+  - id: trailing-whitespace
+  - id: check-yaml
+    args: ['--allow-multiple-documents']
+  - id: check-toml
+
+- repo: https://github.com/PyCQA/flake8
+  rev: 4.0.1
+  hooks:
+  - id: flake8
+    files: "phone_iso3166"
+    additional_dependencies: [flake8-comprehensions]
+
+- repo: https://github.com/psf/black
+  rev: 22.3.0
+  hooks:
+  - id: black
+    files: "phone_iso3166"
+
+- repo: https://github.com/asottile/reorder_python_imports
+  rev: v3.1.0
+  hooks:
+  - id: reorder-python-imports
+    files: "phone_iso3166"
+
+- repo: https://github.com/PyCQA/pydocstyle
+  rev: 6.1.1
+  hooks:
+  - id: pydocstyle
+    args: ["--ignore=D100,D104,D107,D202,D203,D213,D406,D407,D413"]
+    exclude: tests/([a-z0-9_]+/)?(test_*|factories.py)
+    files: "phone_iso3166"
+
+- repo: https://github.com/PyCQA/pylint
+  rev: v2.13.8
+  hooks:
+  - id: pylint
+    files: "phone_iso3166"
+
+- repo: local
+  hooks:
+  - id: mypy
+    name: mypy
+    entry: mypy
+    pass_filenames: false
+    language: system
+    types: [python]
