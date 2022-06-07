@@ -85,7 +85,7 @@ def test_country_lookup(phone_number, country_code):
     ],
 )
 def test_network_multi(mcc, mnc, country_code):
-    assert network_country(mcc, mnc) == country_code  # Guadeloupe
+    assert network_country(mcc, mnc) == country_code
 
 
 def test_network_invalid():
