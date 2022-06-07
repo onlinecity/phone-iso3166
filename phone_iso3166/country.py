@@ -24,7 +24,7 @@ def phone_country(phone):  # pylint: disable=inconsistent-return-statements
 
 
 def country_prefixes():
-    """Return a mapping of coutry code to calling prefix.
+    """Return a mapping of country code to calling prefix.
 
     For countries with multiple prefixes, an arbitrary calling prefix is
     chosen. Many north american country codes just map to 1.
