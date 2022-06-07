@@ -1,34 +1,32 @@
-from phone_iso3166.network import network, country_networks
-from phone_iso3166.errors import InvalidNetwork, InvalidCountry
 import pytest
 
+from phone_iso3166.errors import InvalidCountry
+from phone_iso3166.errors import InvalidNetwork
+from phone_iso3166.network import country_networks
+from phone_iso3166.network import network
 
-def test_network():
-    c, n = network(238, 1)
-    assert c == 'DK'
-    assert n == 'TDC A/S'
 
-    c, n = network(238, 2)
-    assert c == 'DK'
-    assert n == 'Telenor Denmark'
-
-    c, n = network(425, 6)
-    assert c == 'PS'
-    assert n == 'Wataniya Palestine Mobile Telecommunications Company'
+@pytest.mark.parametrize(
+    "mcc, mnc, country_code, network_name",
+    [
+        (238, 1, "DK", "TDC A/S"),
+        (238, 2, "DK", "Telenor Denmark"),
+        (425, 6, "PS", "Wataniya Palestine Mobile Telecommunications Company"),
+    ],
+)
+def test_network(mcc, mnc, country_code, network_name):
+    assert network(mcc, mnc) == (country_code, network_name)
 
 
 def test_country_networks():
-    nets = country_networks('US')
-    for n in nets:
-        mcc, mnc, name0 = n
-        c, name1 = network(mcc, mnc)
-        assert c == 'US'
-        assert name0 == name1
+    networks = country_networks("US")
+    for mcc, mnc, network_name in networks:
+        assert network(mcc, mnc) == ("US", network_name)
 
 
 def test_invalid_country():
     with pytest.raises(InvalidCountry):
-        country_networks('XX')
+        country_networks("XX")
 
 
 def test_invalid_network():
