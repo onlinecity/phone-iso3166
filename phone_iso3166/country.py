@@ -45,15 +45,17 @@ def country_prefixes() -> typing.Dict[str, int]:
     chosen. Many north american country codes just map to 1.
     """
 
-    def transverse(node, path):
+    def traverse(
+        node: typing.Union[dict, str],
+        path: str,
+    ) -> typing.Iterator[typing.Tuple[str, int]]:
         if isinstance(node, dict):
             for key, value in node.items():
-                for i in transverse(value, path + str(key)):
-                    yield i
+                yield from traverse(value, path + str(key))
         else:
             yield node, 1 if node in ["US", "CA"] else int(path)
 
-    return dict(transverse(mapping, ""))
+    return dict(traverse(mapping, ""))
 
 
 def country_prefix(country_code: str) -> int:
