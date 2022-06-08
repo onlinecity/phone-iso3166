@@ -72,7 +72,7 @@ def country_prefix(country_code: str) -> int:
 
 def phone_country_prefix(
     phone: typing.Union[str, int],
-) -> typing.Tuple[int, str]:  # pylint: disable=inconsistent-return-statements
+) -> typing.Tuple[int, str]:
     """Figure out that calling prefix and country a phone number belongs to.
 
     The country returned is in the form of a ISO-3166-1 alpha-2 country code.
