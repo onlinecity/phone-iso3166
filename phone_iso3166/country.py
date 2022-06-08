@@ -83,7 +83,7 @@ def phone_country_prefix(
     ) -> typing.Tuple[int, str]:
         next_key, *remaining_keys = key
         next_element: typing.Union[str, typing.Dict[int, str]] = tree[next_key]
-        key_so_far = f"{key_so_far}{next_key}"
+        key_so_far = key_so_far + str(next_key)
         if isinstance(next_element, dict):
             return traverse_tree(
                 remaining_keys,
