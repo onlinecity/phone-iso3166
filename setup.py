@@ -17,6 +17,7 @@ setup(
     long_description=readfile("README.rst"),
     version=phone_iso3166.__version__,
     packages=find_packages(),
+    package_data={"phone_iso3166": ["py.typed"]},
     maintainer="OC dev team",
     maintainer_email="devs@oc.dk",
     license='MIT',
