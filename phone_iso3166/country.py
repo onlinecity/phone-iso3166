@@ -16,7 +16,7 @@ def phone_country(phone: typing.Union[str, int]) -> str:
     """
 
     def traverse_tree(
-        key: typing.List[int],
+        key: typing.Iterable[int],
         tree: dict,
     ) -> str:
         next_key, *remaining_keys = key
@@ -31,7 +31,7 @@ def phone_country(phone: typing.Union[str, int]) -> str:
 
     try:
         return traverse_tree(
-            [int(digit) for digit in phone if digit.isdigit()],
+            (int(digit) for digit in phone if digit.isdigit()),
             mapping,
         )
     except KeyError as ex:
@@ -77,7 +77,7 @@ def phone_country_prefix(
     """
 
     def traverse_tree(
-        key: typing.List[int],
+        key: typing.Iterable[int],
         tree: dict,
         key_so_far: str = "",
     ) -> typing.Tuple[int, str]:
@@ -98,7 +98,7 @@ def phone_country_prefix(
 
     try:
         return traverse_tree(
-            [int(digit) for digit in phone if digit.isdigit()],
+            (int(digit) for digit in phone if digit.isdigit()),
             mapping,
         )
     except KeyError as ex:
