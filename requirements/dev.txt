@@ -8,6 +8,8 @@ attrs==21.4.0
     # via
     #   -r requirements/test.txt
     #   pytest
+beautifulsoup4==4.11.1
+    # via -r requirements/dev.in
 certifi==2022.5.18.1
     # via requests
 cfgv==3.3.1
@@ -68,6 +70,8 @@ requests==2.22.0
     # via -r requirements/dev.in
 six==1.16.0
     # via virtualenv
+soupsieve==2.3.2.post1
+    # via beautifulsoup4
 toml==0.10.2
     # via
     #   -r requirements/test.txt

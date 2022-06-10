@@ -11,7 +11,7 @@ from phone_iso3166.network import network
     [
         (238, 1, "DK", "TDC A/S"),
         (238, 2, "DK", "Telenor Denmark"),
-        (425, 6, "PS", "Wataniya Palestine Mobile Telecommunications Company"),
+        (425, 6, "PS", "Ooredoo Palestine"),
     ],
 )
 def test_network(mcc, mnc, country_code, network_name):
