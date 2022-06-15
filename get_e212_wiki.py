@@ -37,10 +37,6 @@ def get_wiki_page(url: str) -> Path:
 
 OPERATOR_NAME_CLEANER = re.compile(r"\s+(\[.+\])?$")
 COUNTRY_HEADER = re.compile(r"[A-Z]{2}-[A-Z]{2}|[A-Z]{2}")
-SKIPS = [
-    ("IL", "425", "05"),  # Israeli PLMN used by a Palestinian operator
-    ("IL", "425", "06"),  # Israeli PLMN used by a Palestinian operator
-]
 
 # Some countries share MCC, and since the dataset groups by MCC, it can make
 # it difficult to figure out the correct country for those MCCs.
@@ -66,6 +62,9 @@ OVERRIDES = {
     ("362", "78"): "BQ",
     ("362", "91"): "CW",
     ("362", "94"): "CW",
+    # Israeli MCC+MNCs used by a Palestinian operator
+    ("425", "05"): "PS",
+    ("425", "06"): "PS",
     ("505", "01"): "AU",
     ("505", "02"): "AU",
     ("505", "03"): "AU",
@@ -193,9 +192,6 @@ def extract_page(path: Path) -> typing.Iterator[OperatorEntry]:
                 country_code = OVERRIDES[(mcc, mnc)]
             else:
                 country_code = possible_countries[0]
-
-            if (country_code, mcc, mnc) in SKIPS:
-                continue
 
             operator_name = OPERATOR_NAME_CLEANER.sub("", columns[3].text)
 
