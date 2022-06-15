@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup
+import dataclasses
 from collections import defaultdict
 import requests
 from pprint import pformat
@@ -127,7 +128,20 @@ OVERRIDES = {
 }
 
 
-def extract_page(path):
+@dataclasses.dataclass
+class OperatorEntry:
+    """Container for scraped information about network operators.
+
+    The basic building block we use to build our datasets from.
+    """
+
+    mcc: str
+    mnc: str
+    country_code: str
+    name: str
+
+
+def extract_page(path: Path) -> typing.Iterator[OperatorEntry]:
     """Yield MCC, MNC, country code and operator name entries from a page.
 
     Scrapes the wikipedia page that mostly follows a rigid structure.
@@ -184,7 +198,12 @@ def extract_page(path):
 
             operator_name = OPERATOR_NAME_CLEANER.sub("", columns[3].text)
 
-            yield mcc, mnc, country_code, operator_name
+            yield OperatorEntry(
+                mcc=mcc,
+                mnc=mnc,
+                country_code=country_code,
+                name=operator_name,
+            )
 
 
 def main() -> None:
@@ -210,8 +229,11 @@ def main() -> None:
     extracted_pages = (values for path in paths for values in extract_page(path))
 
     operator_by_plmn = defaultdict(dict)
-    for mcc, mnc, country_code, operator_name in extracted_pages:
-        operator_by_plmn[int(mcc)][int(mnc)] = (country_code, operator_name)
+    for operator in extracted_pages:
+        operator_by_plmn[int(operator.mcc)][int(operator.mnc)] = (
+            operator.country_code,
+            operator.name,
+        )
     operator_by_plmn = dict(operator_by_plmn)
 
     countriesdict = defaultdict(list)
