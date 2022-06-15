@@ -80,7 +80,7 @@ def test_country_lookup(phone_number, country_code):
     [
         (238, 1, "DK"),  # Denmark
         (340, 1, "GP"),  # Guadeloupe
-        (340, 12, "MQ"),  # Martinique
+        (340, 12, "GP"),  # Also Guadeloupe
         (425, 6, "PS"),  # Palestine
     ],
 )
