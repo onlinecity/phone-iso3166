@@ -42,12 +42,14 @@ COUNTRY_HEADER = re.compile(r"[A-Z]{2}-[A-Z]{2}|[A-Z]{2}")
 # it difficult to figure out the correct country for those MCCs.
 # This provides a small override table to correct for those cases.
 OVERRIDES = {
+    # Guadaloupe is grouped with other French Overseas territories
     ("340", "01"): "GP",
     ("340", "02"): "GP",
     ("340", "03"): "GP",
     ("340", "08"): "GP",
     ("340", "09"): "GP",
     ("340", "20"): "GP",
+    # The Former Netherlands Antilles is still grouped in one table
     ("362", "31"): "BQ",
     ("362", "33"): "CW",
     ("362", "51"): "SX",
@@ -65,6 +67,7 @@ OVERRIDES = {
     # Israeli MCC+MNCs used by a Palestinian operator
     ("425", "05"): "PS",
     ("425", "06"): "PS",
+    # Australia is grouped with Christmas and Cook Islands
     ("505", "01"): "AU",
     ("505", "02"): "AU",
     ("505", "03"): "AU",
@@ -119,6 +122,7 @@ OVERRIDES = {
     ("505", "72"): "AU",
     ("505", "88"): "AU",
     ("505", "90"): "AU",
+    # Reunion and Mayotte is also grouped
     ("647", "00"): "RE",
     ("647", "01"): "RE",
     ("647", "02"): "RE",
