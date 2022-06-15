@@ -1,15 +1,16 @@
-from bs4 import BeautifulSoup
 import dataclasses
-from collections import defaultdict
-import requests
-from pprint import pformat
-from pathlib import Path
 import os
-import typing
-import time
-from datetime import timedelta
-import tempfile
 import re
+import tempfile
+import time
+import typing
+from collections import defaultdict
+from datetime import timedelta
+from pathlib import Path
+from pprint import pformat
+
+import requests
+from bs4 import BeautifulSoup
 
 
 def get_wiki_page(url: str) -> Path:
