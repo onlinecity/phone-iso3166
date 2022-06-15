@@ -197,6 +197,12 @@ def extract_page(path: Path) -> typing.Iterator[OperatorEntry]:
             else:
                 country_code = possible_countries[0]
 
+            # The wikipedia data contains some entries that have subregion
+            # country codes, this would perhaps be reasonable to handle, but
+            # including these would be a breaking change.
+            if len(country_code) != 2:
+                continue
+
             operator_name = OPERATOR_NAME_CLEANER.sub("", columns[3].text)
 
             yield OperatorEntry(

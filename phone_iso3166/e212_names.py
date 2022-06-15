@@ -828,7 +828,6 @@ operators = {
         3: ("TR", "Türk Telekom"),
     },
     288: {1: ("FO", "Føroya Tele"), 2: ("FO", "Nema"), 3: ("FO", "Tosa Sp/F")},
-    289: {67: ("GE-AB", "Aquafon JSC"), 88: ("GE-AB", "A-Mobile LLSC")},
     290: {1: ("GL", "TELE Greenland A/S"), 2: ("GL", "inu:it a/s")},
     292: {1: ("SM", "San Marino Telecom")},
     293: {
@@ -3401,7 +3400,6 @@ countries = {
         (282, 14),
         (282, 22),
     ],
-    "GE-AB": [(289, 67), (289, 88)],
     "GF": [(742, 4)],
     "GH": [
         (620, 1),
