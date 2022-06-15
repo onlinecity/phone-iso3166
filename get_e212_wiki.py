@@ -8,7 +8,6 @@ import typing
 import time
 from datetime import timedelta
 import tempfile
-import string
 import re
 
 
@@ -35,7 +34,7 @@ def get_wiki_page(url: str) -> Path:
 
 
 OPERATOR_NAME_CLEANER = re.compile(r"\s+(\[.+\])?$")
-CONTRY_HEADER = re.compile(r"^.+(?P<country_code>[A-Z]{2}(-[A-Z]{2})?)")
+COUNTRY_HEADER = re.compile(r"[A-Z]{2}-[A-Z]{2}|[A-Z]{2}")
 SKIPS = [
     ("IL", "425", "05"),  # Israeli PLMN used by a Palestinian operator
     ("IL", "425", "06"),  # Israeli PLMN used by a Palestinian operator
@@ -46,6 +45,85 @@ SKIPS = [
 # This provides a small override table to correct for those cases.
 OVERRIDES = {
     ("340", "01"): "GP",
+    ("340", "02"): "GP",
+    ("340", "03"): "GP",
+    ("340", "08"): "GP",
+    ("340", "09"): "GP",
+    ("340", "20"): "GP",
+    ("362", "31"): "CW",
+    ("362", "33"): "CW",
+    ("362", "51"): "CW",
+    ("362", "54"): "CW",
+    ("362", "59"): "CW",
+    ("362", "60"): "CW",
+    ("362", "63"): "CW",
+    ("362", "68"): "CW",
+    ("362", "69"): "CW",
+    ("362", "74"): "CW",
+    ("362", "76"): "CW",
+    ("362", "78"): "CW",
+    ("362", "91"): "CW",
+    ("362", "94"): "CW",
+    ("505", "01"): "AU",
+    ("505", "02"): "AU",
+    ("505", "03"): "AU",
+    ("505", "04"): "AU",
+    ("505", "07"): "AU",
+    ("505", "10"): "AU",
+    ("505", "11"): "AU",
+    ("505", "13"): "AU",
+    ("505", "14"): "AU",
+    ("505", "16"): "AU",
+    ("505", "17"): "AU",
+    ("505", "18"): "AU",
+    ("505", "19"): "AU",
+    ("505", "20"): "AU",
+    ("505", "21"): "AU",
+    ("505", "22"): "AU",
+    ("505", "23"): "AU",
+    ("505", "24"): "AU",
+    ("505", "25"): "AU",
+    ("505", "26"): "AU",
+    ("505", "27"): "AU",
+    ("505", "28"): "AU",
+    ("505", "30"): "AU",
+    ("505", "31"): "AU",
+    ("505", "32"): "AU",
+    ("505", "33"): "AU",
+    ("505", "34"): "AU",
+    ("505", "35"): "AU",
+    ("505", "36"): "AU",
+    ("505", "37"): "AU",
+    ("505", "38"): "AU",
+    ("505", "39"): "AU",
+    ("505", "40"): "AU",
+    ("505", "41"): "AU",
+    ("505", "42"): "AU",
+    ("505", "43"): "AU",
+    ("505", "44"): "AU",
+    ("505", "45"): "AU",
+    ("505", "46"): "AU",
+    ("505", "47"): "AU",
+    ("505", "48"): "AU",
+    ("505", "49"): "AU",
+    ("505", "50"): "AU",
+    ("505", "51"): "AU",
+    ("505", "52"): "AU",
+    ("505", "53"): "AU",
+    ("505", "54"): "AU",
+    ("505", "61"): "AU",
+    ("505", "62"): "AU",
+    ("505", "68"): "AU",
+    ("505", "71"): "AU",
+    ("505", "72"): "AU",
+    ("505", "88"): "AU",
+    ("505", "90"): "AU",
+    ("647", "00"): "RE",
+    ("647", "01"): "RE",
+    ("647", "02"): "RE",
+    ("647", "03"): "RE",
+    ("647", "04"): "RE",
+    ("647", "10"): "RE",
 }
 
 
@@ -58,10 +136,7 @@ def extract_page(path):
         soup = BeautifulSoup(fin.read(), features="lxml")
 
     for country_header in soup.find_all("h4"):
-        match = CONTRY_HEADER.match(country_header.text.strip())
-        if match is None:
-            raise ValueError("No country match")
-        country_code = match["country_code"]
+        possible_countries = COUNTRY_HEADER.findall(country_header.text.strip())
 
         table_rows = country_header.find_next_sibling("table").find_all("tr")
         for row in table_rows:
@@ -69,27 +144,47 @@ def extract_page(path):
             if not columns:
                 continue
 
-            mcc = columns[0].text.strip()
-            if not all(digit in string.digits for digit in mcc):
+            # Skip networks that are not in operation anymore.
+            if columns[4].text.strip() == "Not operational":
                 continue
 
-            if columns[4].text == "Not operational":
-                continue
+            mcc = columns[0].text.strip()
+            if len(mcc) != 3:
+                mcc = mcc[-3:]
 
             mnc = columns[1].text.strip()
-            if not all(digit in string.digits for digit in mnc):
+
+            # Some MNC entries on the wiki pages, define ranges with a hyphen
+            # for now we can just skip them, but perhaps in time we should
+            # expand them to the full ranges.
+            if "-" in mnc:
                 continue
+
+            # Some MNC entries on the wiki pages, have unknown MNCs, which is
+            # _problematic_ to say the least.
+            if mnc == "?":
+                continue
+
+            # Due to the structure of the wiki dataset, we have no direct
+            # mapping between MCC+MNC and country codes, only potential country
+            # codes. If we have more than one potential country code, but no
+            # rule for what the country should be in this case, raise an error.
+            if len(possible_countries) != 1 and (mcc, mnc) not in OVERRIDES:
+                raise ValueError(
+                    f"missing override for: {mcc}:{mnc}, options: {possible_countries}"
+                )
+
+            if (mcc, mnc) in OVERRIDES:
+                country_code = OVERRIDES[(mcc, mnc)]
+            else:
+                country_code = possible_countries[0]
 
             if (country_code, mcc, mnc) in SKIPS:
                 continue
 
             operator_name = OPERATOR_NAME_CLEANER.sub("", columns[3].text)
 
-            if (mcc, mnc) in OVERRIDES:
-                yield mcc, mnc, OVERRIDES[(mcc, mnc)], operator_name
-
-            else:
-                yield mcc, mnc, country_code, operator_name
+            yield mcc, mnc, country_code, operator_name
 
 
 def main() -> None:
