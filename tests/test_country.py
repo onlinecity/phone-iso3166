@@ -87,6 +87,8 @@ def test_country_lookup(phone_number, country_code):
         (505, 20, "AU"),  # Australia
         (362, 31, "BQ"),  # Sint Eustatius, formerly Netherlands Antilles
         (362, 51, "SX"),  # Sint Maarten, formerly Netherlands Antillies
+        (647, 0, "RE"),  # Reunion
+        (647, 1, "YT"),  # Mayotte
     ],
 )
 def test_network_multi(mcc, mnc, country_code):
