@@ -81,7 +81,12 @@ def test_country_lookup(phone_number, country_code):
         (238, 1, "DK"),  # Denmark
         (340, 1, "GP"),  # Guadeloupe
         (340, 12, "GP"),  # Also Guadeloupe
+        (425, 5, "PS"),  # Palestine
         (425, 6, "PS"),  # Palestine
+        (425, 7, "IL"),  # Israel
+        (505, 20, "AU"),  # Australia
+        (362, 31, "BQ"),  # Sint Eustatius, formerly Netherlands Antilles
+        (362, 51, "SX"),  # Sint Maarten, formerly Netherlands Antillies
     ],
 )
 def test_network_multi(mcc, mnc, country_code):
