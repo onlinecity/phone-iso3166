@@ -10,7 +10,7 @@ attrs==21.4.0
     #   pytest
 beautifulsoup4==4.11.1
     # via -r requirements/dev.in
-certifi==2022.5.18.1
+certifi==2022.6.15
     # via requests
 cfgv==3.3.1
     # via pre-commit
@@ -29,9 +29,7 @@ iniconfig==1.1.1
     #   -r requirements/test.txt
     #   pytest
 lxml==4.6.5
-    # via
-    #   -r requirements/dev.in
-    #   python-docx
+    # via -r requirements/dev.in
 mypy==0.961
     # via -r requirements/dev.in
 mypy-extensions==0.4.3
@@ -62,8 +60,6 @@ pyparsing==2.4.7
     #   packaging
 pytest==6.1.2
     # via -r requirements/test.txt
-python-docx==0.8.5
-    # via -r requirements/dev.in
 pyyaml==6.0
     # via pre-commit
 requests==2.22.0
