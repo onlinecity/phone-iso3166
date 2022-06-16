@@ -254,11 +254,11 @@ def main() -> None:
         )
     operator_by_plmn = dict(operator_by_plmn)
 
-    countriesdict = defaultdict(list)
+    plmn_by_countries = defaultdict(list)
     for mcc, mncs in operator_by_plmn.items():
         for mnc, country in mncs.items():
-            countriesdict[country[0]].append((mcc, mnc))
-    countriesdict = dict(countriesdict)
+            plmn_by_countries[country[0]].append((mcc, mnc))
+    plmn_by_countries = dict(plmn_by_countries)
 
     with open("phone_iso3166/e212_names.py", "w", encoding="utf8") as fout:
         fout.write("# pylint: disable=too-many-lines\n")
@@ -270,7 +270,7 @@ def main() -> None:
         fout.write(pformat(operator_by_plmn))
 
         fout.write("\n\n\ncountries = \\\n")
-        fout.write(pformat(countriesdict))
+        fout.write(pformat(plmn_by_countries))
         fout.write("\n")
 
     def reduce_operators(
