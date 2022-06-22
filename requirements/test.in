@@ -1,9 +1,4 @@
-coverage==5.5
-pep8==1.5.7
-flake8==2.4.1
-mccabe==0.3.1
-py==1.10.0
-pyflakes==0.8.1
-pytest==2.8.0
-pytest-cov==2.1.0
+pytest==6.1.2  # for python3.5
+packaging==20.9  # for python3.5
+pyparsing==2.4.7  # for python3.5
 pycountry==20.7.3
