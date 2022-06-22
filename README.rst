@@ -1,11 +1,11 @@
-Phone-ISO3166 |build-status| |coverage-status|
+Phone-ISO3166
 ==============================================
 Small project to map an E.164 (international) phone number to the
 ISO-3166-1 alpha 2 (two letter) country code, associated with that number.
 
 Also provides mapping for E.212 (mobile network codes, mcc+mnc) to the country.
 
-The package has no dependencies, and works on Py2.7+, Py3 and PyPy.
+The package has no dependencies, and works on Python 3.6+ and PyPy 3.6+.
 
 
 Simple Usage
