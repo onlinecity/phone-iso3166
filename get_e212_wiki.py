@@ -275,6 +275,7 @@ def main() -> None:
             "#",
             "# Do not make any manual edits to this file.",
             "# Edits will be overwritten when the generator script runs.",
+            "import typing",
             "",
         ]
     )
@@ -282,9 +283,13 @@ def main() -> None:
     with open("phone_iso3166/e212_names.py", "w", encoding="utf8") as fout:
         fout.write("# pylint: disable=too-many-lines\n")
         fout.write(generated_file_header)
-        fout.write(f"\noperators = {pformat(operator_by_plmn)}\n")
+        fout.write(
+            f"\noperators: typing.Dict[int, typing.Dict[int, typing.Tuple[str, str]]] = {pformat(operator_by_plmn)}\n"
+        )
 
-        fout.write(f"\n\ncountries = {pformat(plmn_by_countries)}\n")
+        fout.write(
+            f"\n\ncountries: typing.Dict[str, typing.List[typing.Tuple[int, int]]] = {pformat(plmn_by_countries)}\n"
+        )
         fout.write("\n")
 
     def reduce_operators(
@@ -307,7 +312,9 @@ def main() -> None:
 
     with open("phone_iso3166/e212.py", "w", encoding="utf8") as fout:
         fout.write(generated_file_header)
-        fout.write(f"\nnetworks = {pformat(plmns_to_country)}\n")
+        fout.write(
+            f"\nnetworks: typing.Dict[int, typing.Union[str, typing.Dict[int, str]]] = {pformat(plmns_to_country)}\n"
+        )
 
 
 if __name__ == "__main__":
