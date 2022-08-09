@@ -51,9 +51,16 @@ def test_country_invalid():
         country_prefix("dkk")
 
 
-def test_invalid():
+@pytest.mark.parametrize(
+    "case",
+    [
+        0,
+        12,
+    ],
+)
+def test_invalid(case):
     with pytest.raises(InvalidPhone):
-        phone_country(0)
+        phone_country(case)
 
 
 def test_missing():

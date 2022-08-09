@@ -34,7 +34,7 @@ def phone_country(phone: typing.Union[str, int]) -> str:
             (int(digit) for digit in phone if digit.isdigit()),
             mapping,
         )
-    except KeyError as ex:
+    except (KeyError, ValueError) as ex:
         raise InvalidPhone("Invalid phone {}".format(phone)) from ex
 
 
@@ -103,7 +103,7 @@ def phone_country_prefix(
             (int(digit) for digit in phone if digit.isdigit()),
             mapping,
         )
-    except KeyError as ex:
+    except (KeyError, ValueError) as ex:
         raise InvalidPhone("Invalid phone {}".format(phone)) from ex
 
 
