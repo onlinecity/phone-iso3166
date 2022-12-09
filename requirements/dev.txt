@@ -6,11 +6,11 @@
 #
 attrs==21.4.0
     # via
-    #   -r requirements/test.txt
+    #   -r test.txt
     #   pytest
 beautifulsoup4==4.11.1
-    # via -r requirements/dev.in
-certifi==2022.6.15
+    # via -r dev.in
+certifi==2022.12.7
     # via requests
 cfgv==3.3.1
     # via pre-commit
@@ -26,55 +26,53 @@ idna==2.8
     # via requests
 iniconfig==1.1.1
     # via
-    #   -r requirements/test.txt
+    #   -r test.txt
     #   pytest
 lxml==4.6.5
-    # via -r requirements/dev.in
+    # via -r dev.in
 mypy==0.961
-    # via -r requirements/dev.in
+    # via -r dev.in
 mypy-extensions==0.4.3
     # via mypy
 nodeenv==1.6.0
     # via pre-commit
 packaging==20.9
     # via
-    #   -r requirements/test.txt
+    #   -r test.txt
     #   pytest
 platformdirs==2.5.2
     # via virtualenv
 pluggy==0.13.1
     # via
-    #   -r requirements/test.txt
+    #   -r test.txt
     #   pytest
 pre-commit==2.19.0
-    # via -r requirements/dev.in
+    # via -r dev.in
 py==1.11.0
     # via
-    #   -r requirements/test.txt
+    #   -r test.txt
     #   pytest
 pycountry==20.7.3
-    # via -r requirements/test.txt
+    # via -r test.txt
 pyparsing==2.4.7
     # via
-    #   -r requirements/test.txt
+    #   -r test.txt
     #   packaging
 pytest==6.1.2
-    # via -r requirements/test.txt
+    # via -r test.txt
 pyyaml==6.0
     # via pre-commit
 requests==2.22.0
-    # via -r requirements/dev.in
+    # via -r dev.in
 six==1.16.0
     # via virtualenv
 soupsieve==2.3.2.post1
     # via beautifulsoup4
 toml==0.10.2
     # via
-    #   -r requirements/test.txt
+    #   -r test.txt
     #   pre-commit
     #   pytest
-tomli==2.0.1
-    # via mypy
 typing-extensions==4.2.0
     # via mypy
 urllib3==1.25.11
